@@ -1,7 +1,18 @@
+"use client"
+
 import Image from 'next/image'
 import styles from './page.module.css'
+import { useEffect } from 'react'
+import axios from './axios'
 
 export default function Home() {
+  useEffect(() => {
+    const getUsers = async () => {
+      const response = await axios.get('api/users')
+      console.log(response.data)
+    }
+    getUsers()
+  }, [])
   return (
     <main className={styles.main}>
       <div className={styles.description}>
